@@ -1,0 +1,47 @@
+表字段的增、删、改、查
+
+增：alter table 表名 add 字段名 数据类型 【位置】；
+删：alter table 表名 drop 字段名；
+改：alter table 表名 modify 字段 数据类型 【位置
+重命名：alter table 表名 change oldname newname  数据类型 【位置】
+
+数据的增、删、改、查
+增：insert into 表名（例1，例2，.......）values (v1,v2,.......);
+删：delete from 表名 where 条件；
+改：update 表名 set 字段=‘值’【where 条件】；
+查：select */字段列表 from 表名 【where 条件】；
+
+增数据：insert into my(ID,name,sex,birth,department,address) values 
+(901,'zahnglaoda','nan','1985','jisuanjixi','beijingshihaidianqu');
+改数据：update my set address = 'shanxishengxianshi' where ID=904;
+查数据： select * from my;
+
+库操作：
+（1）新增数据库：create database 名 charset utf8;
+（2）查看所有数据库：show databases;
+（3）查看某一数据库：use 名；show tables；
+（4）查看某一类似“A”数据库：show databases like 'A';
+（5）删除：drop databases 名；
+
+表操作：
+
+（1）新增表：create table 名 （字段名，类型，......）charset utf8;
+（2）查看所有表：show tables;
+（3）查看部分表：show tables like '  ';
+（4）查看表结构： desc 表名；
+（5）修改表名：rename table oldname to newname;
+（6）删除表：drop table 表1，表2，......;
+
+字段操作：
+A表字段：
+
+增：alter table 表名 add 字段名 数据类型 【位置】；
+删：alter table 表名 drop 字段名；
+改：alter table 表名 modify 字段 数据类型 【位置】；
+重命名：alter table 表名 change oldname newname  数据类型 【位置】；
+
+B数据
+增：insert into 表名（例1，例2，.......）values (v1,v2,.......);
+删：delete from 表名 where 条件；
+改：update 表名 set 字段=‘值’【where 条件】；
+查：select */字段列表 from 表名 【where 条件】；
