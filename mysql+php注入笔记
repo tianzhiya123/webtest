@@ -8,3 +8,16 @@ MYSQL+PHP注入：
 7.首先猜解user表,如: and 1=2 union select 1,2,3,4,5,6.... from user /* 如果返回正常，说明存在这个表。
 8.知道了表就猜解字段,and 1=2 union select 1,username,3,4,5,6.... from user/*如果在2字段显示出字段内容则存在些字段。
 9.同理再猜解password字段
+
+
+
+sql注入分类：
+
+基于联合查询
+基于错误回显
+基于盲注，分时间盲注和布尔型的盲注
+基于user-agent
+基于feferer
+基于cookie
+二次注入
+宽字节注入
